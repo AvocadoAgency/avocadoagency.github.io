@@ -3,7 +3,6 @@ $(document).ready(function() {
   $('.reel2014').hide();
 
   $('.reels').click(function() {
-
     if ($('.reel2016').is(':visible')) {
       $('.reels').attr('value', 'CURRENT: Demo Reel 2016');
       $('.reel2016').hide();
@@ -13,9 +12,43 @@ $(document).ready(function() {
       $('.reel2014').hide();
       $('.reel2016').fadeIn(250);
     }
-
-
-
   });
+
+  new Clipboard('.emailButton');
+
+  $('.emailButton').click(function() {
+    $('.copied').fadeIn(150).delay(500).fadeOut(50);
+  })
+
+  $('.gridView').click(function() {
+    if ($('.gridViewer').hasClass('traditional')) {
+      $('.gridViewer').removeClass('traditional').addClass('doubleGallery');
+      $('.gridViewIcon').attr('src','images/ios7-albums.png');
+    } else {
+      $('.gridViewer').removeClass('doubleGallery').addClass('traditional');
+      $('.gridViewIcon').attr('src','images/grid.png');
+    }
+
+  })
+
+  $(document).ready(function() {
+var stickyNavTop = $('.gridView').offset().top;
+
+var stickyNav = function(){
+var scrollTop = $(window).scrollTop();
+
+if (scrollTop > stickyNavTop) {
+    $('.gridView').addClass('sticky');
+} else {
+    $('.gridView').removeClass('sticky');
+}
+};
+
+stickyNav();
+
+$(window).scroll(function() {
+    stickyNav();
+});
+});
 
 });
